@@ -12,7 +12,7 @@ testdata = pd.read_csv('')
 y = traindata.Hardness
 
 print(traindata.columns)
-params = ['allelectrons_Average','ionenergy_Average','el_neg_chi_Average','density_Average']
+params = [#parameters used to predict]
 
 X = traindata[params]
 Xt = testdata[params]
