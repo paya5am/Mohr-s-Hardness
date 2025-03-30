@@ -1,0 +1,40 @@
+
+import pandas as pd
+from sklearn.ensemble import RandomForestRegressor
+import csv
+from sklearn.tree import DecisionTreeRegressor
+
+traindata= pd.read_csv('')
+traindata = traindata.dropna(axis=0)
+
+testdata = pd.read_csv('')
+
+y = traindata.Hardness
+
+print(traindata.columns)
+params = ['allelectrons_Average','ionenergy_Average','el_neg_chi_Average','density_Average']
+
+X = traindata[params]
+Xt = testdata[params]
+
+
+mohrsmodel = DecisionTreeRegressor(max_leaf_nodes=900,random_state=1)
+mohrsmodel.fit(X,y)
+
+prediction = mohrsmodel.predict(Xt)
+
+# have to go through id column of test
+# and make csv with predictions
+
+f= open ('')
+
+fcsv = csv.writer(f)
+fcsv.writerow(['id', 'Hardness'])
+
+for x in range(len(testdata.id)):
+    # x is index
+    fcsv.writerow([testdata.id[x],prediction[x]])
+
+print('DONE')
+
+f.close()
